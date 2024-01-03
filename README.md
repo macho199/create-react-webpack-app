@@ -155,3 +155,20 @@ export default App;
 npm start
 npm run build // 빌드
 ```
+
+## 6. webpack-bundle-analyzer 패키지 설치
+
+```bash
+npm install -D webpack-bundle-analyzer
+```
+
+```js
+// webpack.config.js
+
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+module.exports = {
+  plugins: [
+    new BundleAnalyzerPlugin(), // BundleAnalyzerPlugin 추가
+  ],
+}
+```

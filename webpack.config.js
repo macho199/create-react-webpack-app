@@ -1,6 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
   entry: "./src/index.js",
@@ -20,6 +22,10 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+      },
     ],
   },
   plugins: [
@@ -27,7 +33,13 @@ module.exports = {
       template: "./public/index.html",
     }),
     new BundleAnalyzerPlugin(), // BundleAnalyzerPlugin 추가
+    new MiniCssExtractPlugin(), // MiniCssExtractPlugin 추가
   ],
+  optimization: {
+    minimizer: [
+      new CssMinimizerPlugin(), // CSS 압축을 위한 플러그인 추가
+    ],
+  },
   devServer: {
     static: {
       directory: path.join(__dirname, "dist"),

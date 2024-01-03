@@ -12,7 +12,7 @@ const App = () => {
 
   return (
     <div>
-      <button onClick={btnOnClickEventHandler}>{state}</button>
+      <button className="p-5 bg-red-300" onClick={btnOnClickEventHandler}>{state}</button>
     </div>
   );
 };

@@ -172,3 +172,123 @@ module.exports = {
   ],
 }
 ```
+
+## 7. tailwindcss 추가
+
+```bash
+npm install -D tailwindcss
+npx tailwindcss init
+```
+
+```js
+// tailwind.config.js
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+```css
+// src/index.css
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+```js
+// src/index.js
+
+import './index.css'
+```
+
+PostCSS 추가
+
+```bash
+npm install -D postcss autoprefixer postcss-loader css-loader style-loader
+```
+
+postcss 설정 추가
+
+```js
+// postcss.config.js
+
+module.exports = {
+  plugins: [
+    require("tailwindcss"), 
+    require("autoprefixer")
+  ],
+};
+```
+
+웹팩 설정 파일에서 플러그인 추가 및 CSS 로더 규칙 수정
+
+```js
+// webpack.config.js
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
+      },
+    ],
+  },
+}
+```
+
+### 번들링 시 css 파일 분리
+
+```bash
+npm install -D mini-css-extract-plugin
+```
+
+웹팩 설정 파일에서 플러그인 추가 및 설정
+
+```js
+// webpack.config.js
+
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+      },
+    ],
+  },
+
+  plugins: [
+    new MiniCssExtractPlugin(), // MiniCssExtractPlugin 추가
+  ],
+}
+```
+
+### 번들링 시 css minify 
+
+```bash
+npm install -D css-minimizer-webpack-plugin
+```
+
+웹팩 설정 파일에서 플러그인 추가 및 설정
+
+```js
+// webpack.config.js
+
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+
+module.exports = {
+  optimization: {
+    minimizer: [
+      new CssMinimizerPlugin(), // CSS 압축을 위한 플러그인 추가
+    ],
+  },
+}
+```

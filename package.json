@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode=production --progress",
-    "prepare": "husky install",
     "start": "webpack serve --open --mode=development --progress" 
   },
   "keywords": [],

@@ -6,15 +6,13 @@ const App = () => {
 
   const btnOnClickEventHandler = () => {
     setState((prev) => {
-      console.log(prev);
       return prev + 1;
     });
   };
 
   return (
     <div>
-      <div>{state}</div>
-      <button onClick={btnOnClickEventHandler}>sdfsdf</button>
+      <button onClick={btnOnClickEventHandler}>{state}</button>
     </div>
   );
 };

@@ -34,9 +34,9 @@ module.exports = {
   },
   // HMR 설정 추가
   target: "web", // 브라우저에서 작동하는 코드로 설정
-  devtool: "inline-source-map", // 디버깅을 위한 설정
-  watchOptions: {
-    poll: true, // 파일 변경을 폴링하여 확인
-    ignored: /node_modules/,
-  },
+  //devtool: "eval-source-map", // 디버깅을 위한 설정
+  // watchOptions: {
+  //   poll: true, // 파일 변경을 폴링하여 확인
+  //   ignored: /node_modules/,
+  // },
 };

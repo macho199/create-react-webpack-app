@@ -40,13 +40,6 @@ module.exports = {
       new CssMinimizerPlugin(), // CSS 압축을 위한 플러그인 추가
     ],
   },
-  devServer: {
-    static: {
-      directory: path.join(__dirname, "dist"),
-    },
-    port: 3000,
-    hot: true,
-  },
   // HMR 설정 추가
   target: "web", // 브라우저에서 작동하는 코드로 설정
   //devtool: "eval-source-map", // 디버깅을 위한 설정
